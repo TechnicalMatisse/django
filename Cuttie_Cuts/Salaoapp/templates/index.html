@@ -1,0 +1,469 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuttie Cuts</title>
+    <link rel="shortcut icon" href="assests/favicon.png" type="image/x-icon">
+   
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+   
+    <link rel = "stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <header class="l-header" id="header">
+        <div class="navbar container flex">
+            <div class="brand">
+                <a href="#"><img src="{% static 'assests/Aurora6.png' %}" alt="Studio Hair"></a>
+            </div>
+            <div class="nav" id="nav">
+                <ul class="nav__menu">
+                    <li class="nav__item"><a href="#" class="nav__link active-link">home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">quem somos</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">serviços</a></li>
+                    <li class="nav__item"><a href="#package" class="nav__link">pacotes</a></li>
+                    <li class="nav__item"><a href="localhost:8000/cadastro/" class="nav__link">cadastro</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">contato</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+               
+                <div class="row">
+                   <div class="hero__img">
+                        <img src="{% static 'assests/home-img.png' %}" alt="">
+                    </div>
+                    <div class="hero__content">
+                    
+                        <h1>Seu Grande dia<br><span>em Grande estilo</span></h1>
+                        <p>Venha conhecer nosso cantinho de beleza e aproveite para agendar sua data.</p>
+                        <a href="./agendamento.html" class="btn btn__outline"><i class=''></i>agende seu horário</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="section__title">
+                        <h1>Nossa história</h1>
+                        <span>Cuttie Cuts</span>
+                    </div>
+                    <div class="about__detail">
+                        <div class="about__detail__content">
+                            <div class="about__img">
+                                <img src="{% static 'assests/sobrenos.png' %}" alt="">
+                            </div>
+                            <div class="about__descripion">
+                                <p>A Cuttie Cuts é a mais novíssima clínica estética de Natal/RN.</p><p>Somos uma prestadora de serviços que oferece tratamentos estéticos dos mais diversos setores de aplicação, nos preocupamos com a sua melhora estética e saúde.</p>
+                                <p>Nossa equipe está preparada para te garantir a melhor experiência possível.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="services section" id="services">
+            <div class="services__content">
+                <div class="row">
+                    <div class="section__title">
+                        <h1>Serviços</h1>
+                        <span>Que realizamos</span>
+                    </div>
+                </div>
+                <div class="services__content__descripion grid container">
+                    <div class="box">
+                        <div class="inner">
+                            <img src="{% static 'assests/manicure.png' %}" alt="">
+                            <p>manicure</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="inner">
+                            <img src="{% static 'assests/pedicure.png' %}" alt="">
+                            <p>pedicure</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="inner">
+                            <img src="{% static 'assests/maquiagem.png' %}" alt="">
+                            <p>maquiagem</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="inner">
+                            <img src="{% static 'assests/pentado.png' %}" alt="">
+                            <p>penteado</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="inner">
+                            <img src="{% static  'assests/corte.png' %}" alt="">
+                            <p>corte de cabelo</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="inner">
+                            <img src="{% static 'assests/sobrancelha.png' %}" alt="">
+                            <p>design de sobrancelha</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="inner">
+                            <img src="{% static 'assests/depilacao.png' %}" alt="">
+                            <p>depiliação com cera</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="inner">
+                            <img src="{% static 'assests/limpeza.png' %}" alt="">
+                            <p>limpeza de pele</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="package section" id="package">
+            <div class="package_-content">
+                <div class="row">
+                    <div class="section__title">
+                        <h1>Pacotes promocionais</h1>
+                        <span>Para seu dia de noiva</span>
+                    </div>
+                </div>
+                <div class="package__cards row container">
+                    <div class="card">
+                        <div class="card__title">
+                            <h1>Bronze</h1>
+                        </div>
+                        <div class="card__items">
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Penteado</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Maquiagem</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Unhas<span>(tradicional francesa)</span></p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Depilação<span>(1 area)</span></p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Design de sobrancelha</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Limpeza de pele</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Sala de noiva reservada</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Mesa de frutas</p>
+                            </div>
+                            <button class="btn">quero esse</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__title">
+                            <h1>Prata</h1>
+                        </div>
+                        <div class="card__items">
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Penteado</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Maquiagem</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Unhas<span>(tradicional francesa)</span></p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Depilação<span>(1 area)</span></p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Design de sobrancelha</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Limpeza de pele</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Sala de noiva reservada</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Mesa de frutas</p>
+                            </div>
+                            <button class="btn">quero esse</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__title">
+                            <h1>Ouro</h1>
+                        </div>
+                        <div class="card__items">
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Penteado</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Maquiagem</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Unhas<span>(tradicional francesa)</span></p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Depilação<span>(1 area)</span></p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Design de sobrancelha</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Limpeza de pele</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Sala de noiva reservada</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-x x__icon' ></i>
+                                <p class="not">Mesa de frutas</p>
+                            </div>
+                            <button class="btn">quero esse</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__title">
+                            <h1>Diamante</h1>
+                        </div>
+                        <div class="card__items">
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Penteado</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Maquiagem</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Unhas<span>(tradicional francesa)</span></p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Depilação<span>(1 area)</span></p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Design de sobrancelha</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Limpeza de pele</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Sala de noiva reservada</p>
+                            </div>
+                            <div class="item">
+                                <i class='bx bx-message-square-check check__icon' ></i>
+                                <p>Mesa de frutas</p>
+                            </div>
+                            <button class="btn">quero esse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="gallery section" id="gallery">
+            <div class="gallery__content">
+                <div class="row">
+                    <div class="section__title">
+                        <h1>Galeria</h1>
+                        <span>As princesas do nosso instragram</span>
+                    </div>
+                </div>
+                <div class="gallery__list__img row container">
+                    <div class="gallery__img">
+                        <img src="{% static 'assests/galeria.png' %}" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="{% static 'assests/galeria1.png' %}" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="{% static 'assests/galeria2.png' %}" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="{% static 'assests/galeria3.png' %}" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="{% static 'assests/galeria4.png' %}" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="{% static 'assests/galeria7.png' %}" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="{% static 'assests/galeria9.png' %}" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="{% static 'assests/galeria6.png' %}" alt="">
+                    </div>
+                </div>
+                <button class="btn">ver mais</button>
+            </div>
+        </section>
+        <section class="testimonials section">
+            <div class="testimonials__content">
+                <div class="row">
+                    <div class="section__title">
+                        <h1>Depoimentos</h1>
+                        <span>Veja o que nossos clientes tem a dizer</span>
+                    </div>
+                </div>
+                <div class="testimonials__card container grid">
+                    <div class="testimonials__item flex">
+                        <div class="testimonials__img">
+                            <img src="{% static 'assests/depoimento.png' %}" alt="">
+                        </div>
+                        <div class="testimonials__box">
+                            <div class="testimonials__name">
+                                <h1>Josefina</h1>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                            </div>
+                            <div class="testimonials__descripition">
+                                <p> Adoro o atendimento do salão! Retocando as minhas luzes com as melhores profisionais.  </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonials__item flex">
+                        <div class="testimonials__img">
+                            <img src="{% static 'assests/depoimento2.png' %}" alt="">
+                        </div>
+                        <div class="testimonials__box">
+                            <div class="testimonials__name">
+                                <h1>Cláudia</h1>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                            </div>
+                            <div class="testimonials__descripition">
+                                <p>Ambiente agradável, profissionais excelentes!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonials__item flex">
+                        <div class="testimonials__img">
+                            <img src="{% static 'assests/depoimento5.png' %}" alt="">
+                        </div>
+                        <div class="testimonials__box">
+                            <div class="testimonials__name">
+                                <h1>Luciana</h1>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                            </div>
+                            <div class="testimonials__descripition">
+                                <p>Experiência ótima, excelente atendimento e espaço agradável e moderno.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonials__item flex">
+                        <div class="testimonials__img">
+                            <img src="{% static 'assests/depoimento3.png' %}" alt="">
+                        </div>
+                        <div class="testimonials__box">
+                            <div class="testimonials__name">
+                                <h1>Patricia</h1>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                                <i class='bx bxs-star star__icon' ></i>
+                            </div>
+                            <div class="testimonials__descripition">
+                                <p>Atendimento e serviços profissionais de estética, maquiagem e cabelo de primeira linha!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="contact">
+        <div class="footer__list section container grid">
+            <div class="footer__data">
+                <h1><a href="#"></a></h1>
+                <div class="footer__data-social">
+                    <a href=""><i class='bx bxl-facebook social__icon'></i></a>
+                    <a href=""><i class='bx bxl-instagram social__icon' ></i></a>
+                    <a href=""><i class='bx bxl-whatsapp social__icon' ></i></a>
+                </div>
+            </div>
+            <div class="footer__data">
+                <h2>nosso endereço</h2>
+                <p> Av.Capitão-Mor Gouveia, 2770 <br> Lagoa Nova, Natal - RN </p>
+            </div>
+            <div class="footer__data">
+                <h2>nosso horário</h2>
+                <p>Segunda a sexta<br>das 8:00 às 18:00</p>
+            </div>
+            <div class="footer__data">
+                <h2>Contato</h2>
+                <p>(84) 3205-0517</p>
+                <p>(84) 98859-6912</p>
+            </div>
+        </div>
+        <div class="copy">
+            <p>&copy Todos os direitos reservados</p>
+            <span>Feito para fins escolares </span>
+        </div>
+    </footer>
+    <!-- javascript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
