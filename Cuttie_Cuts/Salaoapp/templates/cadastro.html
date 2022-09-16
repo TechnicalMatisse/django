@@ -14,7 +14,7 @@
   <header> <img src="{% static 'assests/Aurora7.png' %}"></header>
     <main>
         <h1>Cadastro</h1>
-        <form action="">
+       <!-- <form action="">
             <label for="name">
                 <span>Nome completo</span>
                 <input type="text" id="name" name="name">
@@ -36,7 +36,18 @@
             </label>
 
             <input type="submit" value="Criar conta" id="button">
+        </form>-->
+        {% block body%}
+        <form name="cad_user" method="post" >
+            {% csrf_token %}
+            <div class="form-group mt-4">Usuario: {{form.usuario}}</div>
+            <div class="form-group mt-4">Senha: {{form.senha}}</div>
+            <div class="form-group mt-4">Primerio Nome: {{form.nome}}</div>
+            <div class="form-group mt-4">Ultimo Nome: {{form.ultimo_nome}}</div>
+            <input type="submit" class="btn btn-success" value="Salvar">
         </form>
+        {% endblock%}
+
         <div class="auth__after-footer">Já tem um cadastro? <a href="./login.html">Entre agora</a></div>
     </main>
     <section class="images">
@@ -45,12 +56,6 @@
     </section>
 </body>
 </html>
-            <label for="password">
-                <span>Password</span>
-                <input type="password" id="password" name="password">
-            </label>
-
-            <input type="submit" value="Sign Up" id="button">
         </form>
     </main>
     <section class="images">

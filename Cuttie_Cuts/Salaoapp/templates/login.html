@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça o seu login no Cuttie Cuts</title>
+  <link rel="shortcut icon" href="{% static 'assests/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+  <header> <img src="{ % static 'assests/Aurora7.png' %}"></header>
+    <main>
+        <h1>Login</h1>
+        <form action="./a.html">
+            <label for="email">
+                <span>E-mail</span>
+                <input type="email" id="email" name="email">
+            </label>
+
+            <label for="password">
+                <span>Senha</span>
+                <input type="password" id="password" name="password">
+            </label>
+        
+        <input type="submit" value="entrar" id="button">
+        </form>
+        <div class="auth__after-btn u-text--center"><a href="/esqueci-senha/" title="Redefinir senha">Esqueci minha senha</a></div>
+       
+        <div class="auth__after-footer">Ainda não tem conta? <a href="/cadastro/">Cadastra-se</a></div>
+    </main>
+    <section class="images">
+        
+        <div class="circle"></div>
+    </section>
+</body>
+</html>

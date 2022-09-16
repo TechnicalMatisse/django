@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento</title>
+    <link rel="shortcut icon" href="{% static 'assests/favicon(1).png' %}" type="image/x-icon">   
+    <link rel="stylesheet" href="{% static 'css/a.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="{% static 'assests/slp.png' %}" alt="">
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Faça Seu Agendamento</h1>
+                    </div>
+                    
+                </div>
+
+                
+                    <label for="data"><h6>Data:</h6></label>
+<input id="data" type="date" name="data">
+    
+    <label for="hora"><h6>Hora:</h6></label>
+<input id="hora" type="time" name="hora">
+
+               <fieldset>
+      <legend><h6>Serviço(s):</h6></legend>
+      <input id="mani" type="checkbox" name="serviço" value="manicure" /><label for="musc">Manicure</label><br/>
+
+    <input id="pedi" type="checkbox" name="serviço" value="Pedicure" /><label for="musc">Pedicure</label><br/>
+
+  <input id="pent" type="checkbox" name="serviço" value="Penteado" /><label for="musc">Penteado</label><br/>
+
+  <input id="corte" type="checkbox" name="serviço" value="Corte de cabelo" /><label for="musc">Corte de cabelo</label><br/>
+
+  <input id="sobrancelha" type="checkbox" name="serviço" value="Design de sobrancelha" /><label for="musc">Design de sobrancelha</label><br/>
+
+  <input id="cera" type="checkbox" name="serviço" value="Depilação com cera" /><label for="musc">Depilação com cera</label><br/>
+
+      <input id="pele" type="checkbox" name="serviço" value="Limpeza de pele" /><label for="musc">Limpeza de pele</label><br/>
+    </fieldset>
+                        
+                <div class="continue-button">
+                    <button><a href="a.html">Continuar</a> </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
