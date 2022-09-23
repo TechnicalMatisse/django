@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faça o seu login no Cuttie Cuts</title>
-  <link rel="shortcut icon" href="https://i.imgur.com/2heDwe3.png" type="image/x-icon">
+  <link rel="shortcut icon" href="{% static 'assests/favicon.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
-  <header><a href="http://viniboy.pythonanywhere.com/"><img src="https://i.imgur.com/SJkJT7z.png"></a></header>
+  <header> <img src="{ % static 'assests/Aurora7.png' %}"></header>
     <main>
         <h1>Login</h1>
         <form action="./a.html">
@@ -24,15 +24,19 @@
                 <span>Senha</span>
                 <input type="password" id="password" name="password">
             </label>
-
+        
         <input type="submit" value="entrar" id="button">
         </form>
-        <div class="auth__after-btn u-text--center"><a href="/esqueci-senha/" title="Redefinir senha">Esqueci minha senha</a></div>
+        
+        {% block body %}
+        {% endblock %}
 
+        <div class="auth__after-btn u-text--center"><a href="/esqueci-senha/" title="Redefinir senha">Esqueci minha senha</a></div>
+       
         <div class="auth__after-footer">Ainda não tem conta? <a href="/cadastro/">Cadastra-se</a></div>
     </main>
     <section class="images">
-
+        
         <div class="circle"></div>
     </section>
 </body>
