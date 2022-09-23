@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(v(zlxr$*)k-^$i#6*z+$f#t&8qsdgq)e(p2a8-=sutvmc-bz&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'Viniboy.pythonanywhere.com']
 
 
 # Application definition
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'America/Sao_paulo'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
