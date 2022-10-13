@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
 </head>
 <body>
+    <div class="container">
+    <p>Esta div não pode ser exibida</p>
+    </div>
+    
     <header><a href="http://viniboy.pythonanywhere.com/"><img src="https://i.imgur.com/SJkJT7z.png"></a></header>
     <main>
         <h1>Cadastro</h1>
@@ -50,22 +54,9 @@
                 <span>Cep</span>
                 {{endereco.cep}}
             </label>
-
-            <input type="submit" class="btn btn-success" value="Salvar">
+            <input id= "salvar" type="submit" class="btn btn-success" value="Salvar">
         </form>
-        
-        <!--<form name="cad_user" method="post" action="/docad/">
-            {% csrf_token %}
-            <div class="form-group mt-4">Usuario: {{userform.usuario}}</div>
-            <div class="form-group mt-4">Senha: {{userform.senha}}</div>
-            <div class="form-group mt-4">Primerio Nome: {{userform.nome}}</div>
-            <div class="form-group mt-4">Ultimo Nome: {{userform.ultimo_nome}}</div>
-            <div class="form-group mt-4">Celular: {{userform.celular}}</div>
-            <div class="form-group mt-4">Endereco: {{endereco.logradouro}}</div>
-            <div class="form-group mt-4">Cep: {{endereco.cep}}</div>
-            <input type="submit" class="btn btn-success" value="Salvar">
-        </form>-->
-      
+
         <div class="auth__after-footer">Já tem um cadastro? <a href="/login/">Entre agora</a></div>
     </main>
     <section class="images">
@@ -74,35 +65,3 @@
     </section>
 </body>
 </html>
-        </form>
-    </main>
-    <section class="images">
-        
-        <div class="circle"></div>
-    </section>
-</body>
-</html>
-
-<!-- <form action="">
-            <label for="name">
-                <span>Nome completo</span>
-                <input type="text" id="name" name="name">
-            </label>
-
-            <label for="name">
-                <span>Celular</span>
-                <input type="text" id="name" name="name">
-            </label>
-
-            <label for="email">
-                <span>email</span>
-                <input type="email" id="email" name="email">
-            </label>
-
-            <label for="password">
-                <span>Senha</span>
-                <input type="password" id="password" name="password">
-            </label>
-
-            <input type="submit" value="Criar conta" id="button">
-        </form>-->
