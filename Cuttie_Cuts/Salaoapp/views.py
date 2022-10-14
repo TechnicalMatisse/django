@@ -21,6 +21,8 @@ def docad(request):
     for c in tabela:
         if form['usuario'].data == c.usuario:
             return render(request, 'erro.html')
+        if form['celular'].data == c.celular:
+            return render(request, 'erro.html')
     if form.is_valid() and form_sec.is_valid():
             form.save()
             form_sec.save()

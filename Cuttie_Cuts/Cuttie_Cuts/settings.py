@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'Cuttie_Cuts.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cuttie_cuts',
-        'USER': 'root',
-        'PASSWORD': 'Senai2019,',
-        'HOST': 'localhost',
+        'NAME': 'Viniboy$cuttie_cuts',
+        'USER': 'Viniboy',
+        'PASSWORD': 'marcusdograu',
+        'HOST': 'Viniboy.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
 }
