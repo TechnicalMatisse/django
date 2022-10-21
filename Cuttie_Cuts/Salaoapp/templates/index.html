@@ -28,10 +28,11 @@
                     <li class="nav__item"><a href="#about" class="nav__link">quem somos</a></li>
                     <li class="nav__item"><a href="#services" class="nav__link">serviços</a></li>
                     <li class="nav__item"><a href="#package" class="nav__link">pacotes</a></li>
-                    <li class="nav__item"><a href="/cadastro/" class="nav__link">cadastro</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">contato</a></li>
+                    <li class="nav__item"><a href="/cadastro/" class="nav__link">cadastro</a></li>
                     <li class="nav__item"><a href="/login/" class="nav__link">login</a></li>
-                </ul>
+                    {{uid.usuario}}
+                    <button id="btn">logout</button>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -464,7 +465,14 @@
         </div>
     </footer>
     <!-- javascript -->
-    <script src="script.js"></script>
+   <script>
+      let btn = document.getElementById("btn");
+
+      btn.addEventListener("click", () => {
+          window.location.href = "/logout/"
+      })
+  </script>
+
 </body>
 
 </html>

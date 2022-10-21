@@ -95,7 +95,7 @@
     }
 
     function regex_nome(evento){
-        const padrao = /[a-z, '']/
+        const padrao = /[a-z, '', á, é, í, ó, ú, ã, õ, â, ê, ô]/
         var tecla = evento.key
         if(!padrao.test(tecla)){
             return evento.preventDefault()
