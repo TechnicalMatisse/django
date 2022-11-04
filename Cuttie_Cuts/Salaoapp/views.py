@@ -1,36 +1,36 @@
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect, HttpResponse
-from Salaoapp.forms import UsersForm, EnderecoForm, AgendamentoForm
-from Salaoapp.forms import Usuario
+from Salaoapp.forms import UsersForm, AgendamentoForm
+from Salaoapp.models import Usuario, Agendamento
 
 
 # Create your views here.
 def home(request):
+    return render(request, 'index.html')
+
+def homepage(request):
     try:
         profile = {}
         profile['uid'] = Usuario.objects.get(id=request.session['uid'])
+        return render(request,'homepage.html',profile)
     except:
         return render(request, 'index.html')
-    return render(request,'index.html',profile)
 
 def cadastro(request):
     data = {}
     data['userform'] = UsersForm()
-    data['endereco'] = EnderecoForm()
     return render(request,'cadastro.html',data)
 
 def docad(request):
     tabela = Usuario.objects.all()
     form = UsersForm(request.POST or None)
-    form_sec = EnderecoForm(request.POST or None)
     for c in tabela:
         if form['usuario'].data == c.usuario:
             return render(request, 'erro.html')
         if form['celular'].data == c.celular:
             return render(request, 'erro.html')
-    if form.is_valid() and form_sec.is_valid():
+    if form.is_valid():
             form.save()
-            form_sec.save()
     return render(request, 'sucesso.html')
 
 def erro(request):
@@ -38,14 +38,6 @@ def erro(request):
     
 def sucesso(request):
     return render(request, 'sucesso.html',)
-
-def agendamento(request):
-    return render(request, 'agend.html',)
-
-def contagendamento(request):
-    data = {}
-    data['agendform'] = AgendamentoForm()
-    return render(request, 'a.html',data)
 
 def login(request):
     data = {}
@@ -89,4 +81,44 @@ def errorlog(request):
 
 def errorlogout(request):
     return render(request, 'errorlogout.html',)
-    
+
+def profile(request):
+    try:
+        profile = {}
+        profile['perfil'] = UsersForm(instance=Usuario.objects.get(id=request.session['uid']))
+        return render(request,'profile.html',profile)
+    except:
+        return render(request, 'index.html')
+
+def do_update(request):
+    form= Usuario.objects.get(id=request.session['uid'])
+    form.usuario = request.POST['usuario']
+    form.nome = request.POST['nome']
+    form.ultimo_nome = request.POST['ultimo_nome']
+    form.celular = request.POST['celular']
+    form.save()
+    return redirect('homepage')
+
+def agendamento(request):
+    data = {}
+    if request.method == 'POST':
+        c = Agendamento(usuario=Usuario.objects.get(id=request.session['uid']), nome = request.POST['nome'], ultimo_nome = request.POST['ultimo_nome'], celular = request.POST['celular'], data = request.POST['data'], hora = request.POST['hora'], comentario = request.POST['comentario'])
+        c.save()
+        return redirect('agendamento')
+    else:
+        data['agendform'] = AgendamentoForm()
+        data['history'] = Agendamento.objects.filter(usuario=request.session['uid'])
+        print(data['history'])
+        return render(request,'agend.html',data)
+
+def edit_coment(request, id):
+    c = Agendamento.objects.get(id=id)
+    if request.method == 'POST':
+        f = AgendamentoForm(request.POST, instance=c)
+        f.save()
+        return redirect('agendamento')
+    else:
+        f = AgendamentoForm(instance=c)
+        return render(request, 'agend.html',{'agendform':f})
+
+

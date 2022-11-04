@@ -25,12 +25,33 @@
             <div class="nav" id="nav">
                 <ul class="nav__menu">
                     <li class="nav__item"><a href="#" class="nav__link active-link">home</a></li>
-                    <li class="nav__item"><a href="#about" class="nav__link">Sobre</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">sobre</a></li>
                     <li class="nav__item"><a href="#services" class="nav__link">serviços</a></li>
                     <li class="nav__item"><a href="#package" class="nav__link">pacotes</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">contato</a></li>
-                    <li class="nav__item"><a href="/cadastro/" class="nav__link">cadastro</a></li>
-                    <li class="nav__item"><a href="/login/" class="nav__link">login</a></li>
+                    <p class = "nav_item"><b style="color:#926d48;">{{uid.usuario}}</b></p> 
+                    <img src="https://i.imgur.com/Qo7KCvt.png" class="user-pic" onclick="toggleMenu()">
+                    <div class="sub-menu-wrap" id= "subMenu">
+                      <div class="sub-menu">
+                        <div class="uer-info"> <a href="#" class="sub-menu-link">
+                        <img src="https://i.imgur.com/kEdSuDz.png">
+                        <h2>Editar foto</h2>
+                        </div>
+                        <hr>
+            
+                        <a href="/perfil/" class="sub-menu-link">
+                          <img src="https://i.imgur.com/wgMBil1.png">
+                          <p>Atualizar seu cadastro</p>
+                          <span></span>
+                        </a>
+                        <a id="btn" class="sub-menu-link">
+                          <img src="https://i.imgur.com/pprEGEJ.png">
+                          <p>Sair</p>
+                          <span></span>
+                        </a>
+                      </div>
+                    </div>
+                    </ul>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -49,7 +70,8 @@
                     <div class="hero__content">
 
                         <h1>Seu Grande dia<br><span>em Grande estilo</span></h1>
-                        <p>Venha conhecer nosso cantinho de beleza, faça o login para fazer agendamentos.</p>
+                        <p>Venha conhecer nosso cantinho de beleza e aproveite para agendar sua data.</p>
+                        <a href="/agendamento/" class="btn btn__outline"><i class=''></i>agende seu horário</a>
                     </div>
                 </div>
             </div>
@@ -461,6 +483,21 @@
             <span>Feito para fins escolares </span>
         </div>
     </footer>
+    <!-- javascript -->
+    <script> 
+        let subMenu = document.getElementById("subMenu");
+
+        function toggleMenu(){
+          subMenu.classList.toggle("open-menu");
+        }
+
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+            window.location.href = "/logout/"
+        })
+   </script>
+
 </body>
 
 </html>

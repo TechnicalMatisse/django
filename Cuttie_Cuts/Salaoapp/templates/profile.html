@@ -6,61 +6,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crie o seu perfil no Cuttie Cuts</title>
+    <title>Atualize seu cadastro</title>
     <link rel="shortcut icon" href="https://i.imgur.com/2heDwe3.png" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
 </head>
 <body>
-    
+
     <header><a href="http://viniboy.pythonanywhere.com/"><img src="https://i.imgur.com/SJkJT7z.png"></a></header>
     <main>
-        <h1>Cadastro</h1>
-        <form method="post" action="/docad/">
+        <h1>Atualização de cadastro</h1>
+        <form method="post" action="/doupdate/">
             {% csrf_token %}
             <label for="name">
                 <span>Usuario</span>
-               {{userform.usuario}}
-            </label>
-
-            <label for="name">
-                <span id="password-status">Senha</span>
-                {{userform.senha}}
+               {{perfil.usuario}}
             </label>
 
             <label for="email">
                 <span>Primeiro Nome</span>
-                {{userform.nome}}
+                {{perfil.nome}}
             </label>
 
             <label for="password">
                 <span>Último Nome</span>
-                {{userform.ultimo_nome}}
+                {{perfil.ultimo_nome}}
             </label>
 
             <label for="password">
                 <span>Celular</span>
-                {{userform.celular}}
+                {{perfil.celular}}
             </label>
 
-            <input id= "salvar" type="submit" class="btn btn-success" value="Salvar">
+            <input id= "salvar" type="submit" class="btn btn-success" value="Atualizar">
         </form>
 
-        <div class="auth__after-footer">Já tem um cadastro? <a href="/login/">Entre agora</a></div>
     </main>
     <section class="images">
         
         <div class="circle"></div>
     </section>
     <script>
-    
-    function regex_nome(evento){
-        const padrao = /[A-Z, a-z, '', á, é, í, ó, ú, ã, õ, â, ê, ô]/
-        var tecla = evento.key
-        if(!padrao.test(tecla)){
-            return evento.preventDefault()
-        }
-    }
-    
     function regex_cel(evento){
         const padrao = /[0-9]/
         var tecla = evento.key
@@ -68,12 +53,24 @@
             return evento.preventDefault()
         }
         let txt = document.getElementById('id_celular')
-        if(txt.value.length==5){
+        if(txt.value.length==''){
+            txt.value += "("
+        }
+        if(txt.value.length==3){
+            txt.value += ")"
+        }
+        if(txt.value.length==9){
             txt.value += "-"
         }
     }
 
-    
+    function regex_nome(evento){
+        const padrao = /[a-z, '', á, é, í, ó, ú, ã, õ, â, ê, ô]/
+        var tecla = evento.key
+        if(!padrao.test(tecla)){
+            return evento.preventDefault()
+        }
+    }
     </script>
     
 </body>

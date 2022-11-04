@@ -1,55 +1,65 @@
 {% load static %}
+<html lang="en">
 
-<!DOCTYPE html>
-<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento</title>
-    <link rel="shortcut icon" href="https://i.imgur.com/2heDwe3.png" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/agend.css' %}">
+    <link rel="shortcut icon" href="https://i.imgur.com/2heDwe3.png" type="image/x-icon">
+    <title>Agendamento</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="form-image">
-            <img src="https://i.imgur.com/qHziju3.png" alt="">
-        </div>
-        <div class="form">
-            <form action="#">
-                <div class="form-header">
-                    <div class="title">
-                        <h1>Faça Seu Agendamento</h1>
-                    </div>
 
+    <header>
+        <main>
+            <div>
+                <img src="https://i.imgur.com/3uy9MEM.png">
+            </div>
+            <div>
+                <a href="http://viniboy.pythonanywhere.com/"><img src="https://i.imgur.com/SJkJT7z.png"></a>
+            </div>
+
+            <div>
+                <img src="https://i.imgur.com/ulYMAIC.png">
+            </div>
+            
+        </main>
+    </header>
+    <div class="content">
+        <form method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Agendamento</legend>
+                <div class="row">
+                    <label for="nome">Nome</label>
+                    {{agendform.nome}}
                 </div>
-
-                <div class="input-group">
-                    <div class="input-box">
-                        <label for="firstname">Primeiro Nome</label>
-                        <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="lastname">Sobrenome</label>
-                        <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="number">Celular</label>
-                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
-                    </div>
-
+                <div class="row">
+                    <label for="sobrenome">Sobrenome</label>
+                    {{agendform.ultimo_nome}}
                 </div>
+                <div class="row">
+                    <label for="number">Celular</label>
+                    {{agendform.celular}}
+                </div>
+                <div class="row">
+                    <label for="data">Data do atendimento</label>
+                    {{agendform.data}}
 
+                    <div class="row">
+                        <label for="hora">Hora</label>
+                        {{agendform.hora}}
+
+            </fieldset>
+
+            <legend>Serviços</legend>
+
+            <div>
                 <div class="gender-inputs">
                     <div class="gender-title">
-                        <h6>Pacote</h6>
+                        <p>Pacotes (opcional)</p>
                     </div>
 
                     <div class="gender-group">
@@ -74,13 +84,88 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="continue-button">
-                    <button><a href="/contagendamento/">Continuar</a> </button>
+            <br>
+            <div class="label">
+                <fieldset>
+                    <p><input id="mani" type="checkbox" name="serviço" value="manicure" /><label
+                            for="musc"><b>R$20</b>Manicure </label><br /></p>
+
+                    <p><input id="pedi" type="checkbox" name="serviço" value="Pedicure" /><label
+                            for="musc"><b>R$25</b>Pedicure </label><br /></p>
+
+                    <p><input id="pent" type="checkbox" name="serviço" value="Penteado" /><label
+                            for="musc"><b>R$68</b>Penteado</label><br /></p>
+
+                    <p><input id="corte" type="checkbox" name="serviço" value="Corte de cabelo" /><label
+                            for="musc"><b>R$35</b>Corte</label><br /></p>
+
+                    <p><input id="sobrancelha" type="checkbox" name="serviço" value="Design de sobrancelha" /><label
+                            for="musc"><b>R$30</b>Design de sobrancelha</label><br /></p>
+
+                    <p><input id="cera" type="checkbox" name="serviço" value="Depilação com cera" /><label
+                            for="musc"><b>R$45</b>Depilação com cera</label><br /></p>
+
+                    <p><input id="pele" type="checkbox" name="serviço" value="Limpeza de pele" /><label
+                            for="musc"><b>R$80</b>Limpeza de pele</label><br /></p>
+                </fieldset>
+            </div>
+            <div class="row">
+                <label for="sobre">Alguma observação para o atendimento? </label>
+            </div>
+            <div class="row">
+                {{agendform.comentario}}
+
+                <!--                         <textarea name="sobre" id="sobre" cols="30" rows="5" placeholder="Descreva suas observações"
+                            autocomplete="off"></textarea>-->
+            </div>
+
+            <div class="buttons">
+                <input type="submit" value="Enviar">
+            </div>
+            <legend>Seus agendamentos</legend>
+            <div class="history">
+                {% if history %}
+                {% for c in history %}
+                <div class="informacoes">
+                    <p>
+                        {{c.data}}
+                    </p>
+                    <p>
+                        {{c.hora}}
+                    </p>
+                    <a href="{% url 'edit_coment' c.id %}">[EDITAR]</a>
                 </div>
-            </form>
-        </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </form>
     </div>
 </body>
+    <script>
+        
+        function regex_nome(evento){
+            const padrao = /[A-Z, a-z, '', á, é, í, ó, ú, ã, õ, â, ê, ô]/
+            var tecla = evento.key
+            if(!padrao.test(tecla)){
+                return evento.preventDefault()
+            }
+        }
+        
+        function regex_cel(evento){
+            const padrao = /[0-9]/
+            var tecla = evento.key
+            if(!padrao.test(tecla)){
+                return evento.preventDefault()
+            }
+            let txt = document.getElementById('id_celular')
+            if(txt.value.length==5){
+                txt.value += "-"
+            }
+        }
+
+        
+    </script>
 
 </html>

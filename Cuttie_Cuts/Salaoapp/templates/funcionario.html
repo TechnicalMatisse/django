@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuttie Cuts</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/2heDwe3.png" type="image/x-icon">
+
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel = "stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <header class="l-header" id="header">
+        <div class="navbar container flex">
+            <div class="brand">
+                <a href="#"><img src="https://i.imgur.com/Fw3tmNN.png" alt="Studio Hair"></a>
+            </div>
+            <div class="nav" id="nav">
+                <ul class="nav__menu">
+                    <li class="nav__item"><a href="#" class="nav__link active-link">home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">sobre</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">serviços</a></li>
+                    <li class="nav__item"><a href="#package" class="nav__link">pacotes</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">contato</a></li>
+                    <p class = "nav_item"><b style="color:#926d48;">{{uid.usuario}}</b></p> 
+                    <img src="https://i.imgur.com/Qo7KCvt.png" class="user-pic" onclick="toggleMenu()">
+                    <div class="sub-menu-wrap" id= "subMenu">
+                      <div class="sub-menu">
+                        <div class="uer-info"> <a href="#" class="sub-menu-link">
+                        <img src="https://i.imgur.com/kEdSuDz.png">
+                        <h2>Editar foto</h2>
+                        </div>
+                        <hr>
+        
+                        <a id="btn" class="sub-menu-link">
+                          <img src="https://i.imgur.com/pprEGEJ.png">
+                          <p>Sair</p>
+                          <span></span>
+                        </a>
+                      </div>
+                    </div>
+                    </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+
+                <div class="row">
+                   <div class="hero__img">
+                        <img src="https://i.imgur.com/PL0quYW.png" alt="">
+                    </div>
+                    <div class="hero__content">
+
+                        <h1>Seu Grande dia<br><span>em Grande estilo</span></h1>
+                        <p>Venha conhecer nosso cantinho de beleza, faça o login para fazer agendamentos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+     
+    <footer class="footer" id="contact">
+        <div class="footer__list section container grid">
+            <div class="footer__data">
+                <h1><a href="#"></a></h1>
+                <div class="footer__data-social">
+                    <a href=""><i class='bx bxl-facebook social__icon'></i></a>
+                    <a href=""><i class='bx bxl-instagram social__icon' ></i></a>
+                    <a href=""><i class='bx bxl-whatsapp social__icon' ></i></a>
+                </div>
+            </div>
+            <div class="footer__data">
+                <h2>nosso endereço</h2>
+                <p> Av.Capitão-Mor Gouveia, 2770 <br> Lagoa Nova, Natal - RN </p>
+            </div>
+            <div class="footer__data">
+                <h2>nosso horário</h2>
+                <p>Segunda a sexta<br>das 8:00 às 18:00</p>
+            </div>
+            <div class="footer__data">
+                <h2>Contato</h2>
+                <p>(84) 3205-0517</p>
+                <p>(84) 98859-6912</p>
+            </div>
+        </div>
+        <div class="copy">
+            <p>&copy Todos os direitos reservados</p>
+            <span>Feito para fins escolares </span>
+        </div>
+    </footer>
+    <!-- javascript -->
+    <script> 
+        let subMenu = document.getElementById("subMenu");
+
+        function toggleMenu(){
+          subMenu.classList.toggle("open-menu");
+        }
+
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+            window.location.href = "/logout/"
+        })
+   </script>
+
+</body>
+
+</html>
