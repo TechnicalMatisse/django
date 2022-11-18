@@ -13,24 +13,17 @@ class Usuario (models.Model):
 
 class Agendamento (models.Model):
     data = models.DateField()
-    hora = models.TimeField()
+    hora = models.CharField(max_length=120)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     nome = models.CharField(max_length=25)
     ultimo_nome = models.CharField(max_length=25)
     celular = models.CharField(max_length=10)
-    comentario = models.TextField(max_length=255)
-
-class Pacotes(models.Model):
-    prata = models.BooleanField()
-    bronze = models.BooleanField()
-    ouro = models.BooleanField()
-    diamante = models.BooleanField()
+    comentario = models.TextField(max_length=255, blank=True)
 
 class Servicos(models.Model):
-    manicure = models.BooleanField()
-    pedicure = models.BooleanField()
-    pentado = models.BooleanField()
-    corte = models.BooleanField()
-    sobrancelha = models.BooleanField()
-    depilacao = models.BooleanField()
-    limpeza = models.BooleanField()
+    preenchido = models.ManyToManyField(Agendamento, through='Servicos_preenchido')
+
+class Servicos_preenchido(models.Model):
+    servico = models.ForeignKey(Servicos, on_delete=models.CASCADE)
+    agendamento = models.ForeignKey(Agendamento, on_delete=models.CASCADE)
+    

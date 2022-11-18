@@ -56,7 +56,7 @@
 
             <legend>Serviços</legend>
 
-            <div>
+            <!-- <div>
                 <div class="gender-inputs">
                     <div class="gender-title">
                         <p>Pacotes (opcional)</p>
@@ -85,29 +85,29 @@
                     </div>
                 </div>
             </div>
-
+ -->
             <br>
             <div class="label">
                 <fieldset>
-                    <p><input id="mani" type="checkbox" name="serviço" value="manicure" /><label
+                    <p>{{servicoform.manicure}}<label
                             for="musc"><b>R$20</b>Manicure </label><br /></p>
 
-                    <p><input id="pedi" type="checkbox" name="serviço" value="Pedicure" /><label
+                    <p>{{servicoform.pedicure}}<label
                             for="musc"><b>R$25</b>Pedicure </label><br /></p>
 
-                    <p><input id="pent" type="checkbox" name="serviço" value="Penteado" /><label
+                    <p>{{servicoform.penteado}}<label
                             for="musc"><b>R$68</b>Penteado</label><br /></p>
 
-                    <p><input id="corte" type="checkbox" name="serviço" value="Corte de cabelo" /><label
+                    <p>{{servicoform.corte}}<label
                             for="musc"><b>R$35</b>Corte</label><br /></p>
 
-                    <p><input id="sobrancelha" type="checkbox" name="serviço" value="Design de sobrancelha" /><label
+                    <p>{{servicoform.sobrancelha}}<label
                             for="musc"><b>R$30</b>Design de sobrancelha</label><br /></p>
 
-                    <p><input id="cera" type="checkbox" name="serviço" value="Depilação com cera" /><label
+                    <p>{{servicoform.depilacao}}<label
                             for="musc"><b>R$45</b>Depilação com cera</label><br /></p>
 
-                    <p><input id="pele" type="checkbox" name="serviço" value="Limpeza de pele" /><label
+                    <p>{{servicoform.limpeza}}<label
                             for="musc"><b>R$80</b>Limpeza de pele</label><br /></p>
                 </fieldset>
             </div>
@@ -136,6 +136,7 @@
                         {{c.hora}}
                     </p>
                     <a href="{% url 'edit_coment' c.id %}">[EDITAR]</a>
+                    <a href="{% url 'agend_delete' c.id %}">[DELETAR]</a>
                 </div>
                 {% endfor %}
                 {% endif %}

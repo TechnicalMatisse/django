@@ -1,7 +1,7 @@
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect, HttpResponse
-from Salaoapp.forms import UsersForm, AgendamentoForm
-from Salaoapp.models import Usuario, Agendamento
+from Salaoapp.forms import UsersForm, AgendamentoForm, ServicosForm
+from Salaoapp.models import Usuario, Agendamento, Servicos, Servicos_preenchido
 
 
 # Create your views here.
@@ -99,6 +99,43 @@ def do_update(request):
     form.save()
     return redirect('homepage')
 
+""" def agendamento(request):
+    data = {}
+    if request.method == 'POST':
+        for i in request.POST:
+            print(i)
+            if i != "btn_save" and i != "":
+                n = 1 
+                item = "prod_"+ str(n)
+                if(request.POST[item]):
+                    c = Agendamento(usuario=Usuario.objects.get(id=request.session['uid']), nome = request.POST['nome'], ultimo_nome = request.POST['ultimo_nome'], celular = request.POST['celular'],data = request.POST['data'], hora = request.POST['hora'], comentario = request.POST['comentario'])
+                    c.save()
+                    s = Servicos_preenchido(agendamento=Agendamento.objects.get(hora = request.POST['hora'], data = request.POST['data']), servico_id = n )
+                    s.preenchido = 0
+                    s.save()
+                n = n+1
+        return redirect('agendamento')
+    else:
+        data['agendform'] = AgendamentoForm()
+        data['servicoform'] = ServicosForm()
+        data['history'] = Agendamento.objects.filter(usuario=request.session['uid'])
+        data['history'] = Servicos.objects.filter(id=request.session['uid'])
+        return render(request,'agend.html',data) """
+
+""" def edit_coment(request, id):
+    c = Agendamento.objects.get(id=id)
+    s = Servicos.objects.get(id=id)
+    if request.method == 'POST':
+        f = AgendamentoForm(request.POST, instance=c)
+        m = ServicosForm(request.POST, instance=c)
+        m.save()
+        f.save()
+        return redirect('agendamento')
+    else:
+        f = AgendamentoForm(instance=c)
+        m = ServicosForm(instance=s)
+        return render(request, 'agend.html',{'agendform':f},{'servicoform':m} ) """
+        
 def agendamento(request):
     data = {}
     if request.method == 'POST':
@@ -111,6 +148,7 @@ def agendamento(request):
         print(data['history'])
         return render(request,'agend.html',data)
 
+
 def edit_coment(request, id):
     c = Agendamento.objects.get(id=id)
     if request.method == 'POST':
@@ -120,5 +158,12 @@ def edit_coment(request, id):
     else:
         f = AgendamentoForm(instance=c)
         return render(request, 'agend.html',{'agendform':f})
+
+def agend_delete(request, id):
+    c =Agendamento.objects.get(id=id)
+    c.delete()
+    return redirect('agendamento')
+    
+
 
 

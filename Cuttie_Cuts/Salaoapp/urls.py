@@ -21,4 +21,5 @@ urlpatterns = [
     path('perfil/', views.profile, name ='perfil'),
     path('doupdate/', views.do_update, name ='doupdate'),
     path('agendamento/<int:id>/editar',views.edit_coment, name='edit_coment'),
+    path('agend_delete/<int:id>/deletar',views.agend_delete, name='agend_delete'),
 ]
