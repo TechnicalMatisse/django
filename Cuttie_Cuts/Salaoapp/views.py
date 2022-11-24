@@ -98,55 +98,26 @@ def do_update(request):
     form.celular = request.POST['celular']
     form.save()
     return redirect('homepage')
+      
 
-""" def agendamento(request):
-    data = {}
-    if request.method == 'POST':
-        for i in request.POST:
-            print(i)
-            if i != "btn_save" and i != "":
-                n = 1 
-                item = "prod_"+ str(n)
-                if(request.POST[item]):
-                    c = Agendamento(usuario=Usuario.objects.get(id=request.session['uid']), nome = request.POST['nome'], ultimo_nome = request.POST['ultimo_nome'], celular = request.POST['celular'],data = request.POST['data'], hora = request.POST['hora'], comentario = request.POST['comentario'])
-                    c.save()
-                    s = Servicos_preenchido(agendamento=Agendamento.objects.get(hora = request.POST['hora'], data = request.POST['data']), servico_id = n )
-                    s.preenchido = 0
-                    s.save()
-                n = n+1
-        return redirect('agendamento')
-    else:
-        data['agendform'] = AgendamentoForm()
-        data['servicoform'] = ServicosForm()
-        data['history'] = Agendamento.objects.filter(usuario=request.session['uid'])
-        data['history'] = Servicos.objects.filter(id=request.session['uid'])
-        return render(request,'agend.html',data) """
-
-""" def edit_coment(request, id):
-    c = Agendamento.objects.get(id=id)
-    s = Servicos.objects.get(id=id)
-    if request.method == 'POST':
-        f = AgendamentoForm(request.POST, instance=c)
-        m = ServicosForm(request.POST, instance=c)
-        m.save()
-        f.save()
-        return redirect('agendamento')
-    else:
-        f = AgendamentoForm(instance=c)
-        m = ServicosForm(instance=s)
-        return render(request, 'agend.html',{'agendform':f},{'servicoform':m} ) """
-        
 def agendamento(request):
     data = {}
+    data['servicoform'] = Servicos.objects.all()
     if request.method == 'POST':
         c = Agendamento(usuario=Usuario.objects.get(id=request.session['uid']), nome = request.POST['nome'], ultimo_nome = request.POST['ultimo_nome'], celular = request.POST['celular'], data = request.POST['data'], hora = request.POST['hora'], comentario = request.POST['comentario'])
         c.save()
+        for i in request.POST:
+            if i.find("-")!=-1:
+                print(i)
+                sid = i.split("-")
+                s = Servicos_preenchido.objects.create(servico=Servicos.objects.get(id=sid[1]), agendamento=c)
+                s.save()
         return redirect('agendamento')
     else:
         data['agendform'] = AgendamentoForm()
         data['history'] = Agendamento.objects.filter(usuario=request.session['uid'])
-        print(data['history'])
         return render(request,'agend.html',data)
+
 
 
 def edit_coment(request, id):
@@ -163,7 +134,6 @@ def agend_delete(request, id):
     c =Agendamento.objects.get(id=id)
     c.delete()
     return redirect('agendamento')
-    
 
 
 

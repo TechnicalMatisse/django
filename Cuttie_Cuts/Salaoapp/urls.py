@@ -23,3 +23,26 @@ urlpatterns = [
     path('agendamento/<int:id>/editar',views.edit_coment, name='edit_coment'),
     path('agend_delete/<int:id>/deletar',views.agend_delete, name='agend_delete'),
 ]
+
+
+
+""" 
+
+def agendamento(request):
+    data = {}
+    data['servicoform'] = Servicos.objects.all()
+    if request.method == 'POST':
+        c = Agendamento(usuario=Usuario.objects.get(id=request.session['uid']), nome = request.POST['nome'], ultimo_nome = request.POST['ultimo_nome'], celular = request.POST['celular'], data = request.POST['data'], hora = request.POST['hora'], comentario = request.POST['comentario'])
+        c.save()
+        for i in request.POST:
+            if i.find('_')!=-1:
+                
+            
+                s = Servicos_preenchido(agendamento=c.id, servico=int(sid[1]))
+                s.save()
+        return redirect('agendamento')
+    else:
+        data['agendform'] = AgendamentoForm()
+        data['history'] = Agendamento.objects.filter(usuario=request.session['uid'])
+        return render(request,'agend.html',data)
+ """

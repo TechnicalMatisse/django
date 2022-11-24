@@ -89,27 +89,9 @@
             <br>
             <div class="label">
                 <fieldset>
-                    <p>{{servicoform.manicure}}<label
-                            for="musc"><b>R$20</b>Manicure </label><br /></p>
-
-                    <p>{{servicoform.pedicure}}<label
-                            for="musc"><b>R$25</b>Pedicure </label><br /></p>
-
-                    <p>{{servicoform.penteado}}<label
-                            for="musc"><b>R$68</b>Penteado</label><br /></p>
-
-                    <p>{{servicoform.corte}}<label
-                            for="musc"><b>R$35</b>Corte</label><br /></p>
-
-                    <p>{{servicoform.sobrancelha}}<label
-                            for="musc"><b>R$30</b>Design de sobrancelha</label><br /></p>
-
-                    <p>{{servicoform.depilacao}}<label
-                            for="musc"><b>R$45</b>Depilação com cera</label><br /></p>
-
-                    <p>{{servicoform.limpeza}}<label
-                            for="musc"><b>R$80</b>Limpeza de pele</label><br /></p>
-                </fieldset>
+                    {% for s in servicoform %}
+                    <p><input type="checkbox" id="{{s.id}}" name="servico-{{s.id}}"> <b>R${{s.valor}}</b>{{s.servico}}</p>
+                    {% endfor %}
             </div>
             <div class="row">
                 <label for="sobre">Alguma observação para o atendimento? </label>
@@ -124,6 +106,7 @@
             <div class="buttons">
                 <input type="submit" value="Enviar">
             </div>
+
             <legend>Seus agendamentos</legend>
             <div class="history">
                 {% if history %}

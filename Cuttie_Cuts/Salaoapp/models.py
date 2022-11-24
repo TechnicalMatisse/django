@@ -21,6 +21,8 @@ class Agendamento (models.Model):
     comentario = models.TextField(max_length=255, blank=True)
 
 class Servicos(models.Model):
+    servico = models.CharField(max_length=120) 
+    valor = models.IntegerField()
     preenchido = models.ManyToManyField(Agendamento, through='Servicos_preenchido')
 
 class Servicos_preenchido(models.Model):

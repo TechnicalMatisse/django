@@ -16,6 +16,33 @@ TIME_CHOICES = [
     ("18:00 às 19:00", "18:00 às 19:00"),
 ]
 
+MAN_CHOICES = [
+    ("Manicure", "manicure"),
+]
+
+PED_CHOICES = [
+    ("Pedicure", "pedicure"),
+]
+
+PEN_CHOICES = [
+    ("Penteado", "penteado"),
+]
+
+CORTE_CHOICES = [
+    ("Corte", "corte"),
+]
+SOB_CHOICES = [
+    ("Sobrancelha", "sobrancelha"),
+]
+
+DEP_CHOICES = [
+    ("Depilacao", "depilacao"),
+]
+
+LIMP_CHOICES = [
+    ("Limpeza", "limpeza"),
+]
+
 # Create the form class.
 class UsersForm(ModelForm):
     senha = forms.CharField(widget=forms.PasswordInput(attrs={'maxlength': '14'}))
@@ -37,19 +64,12 @@ class AgendamentoForm(ModelForm):
         model = Agendamento
         fields = [ 'nome', 'ultimo_nome', 'celular', 'data', 'hora', 'comentario']
 
-
 class ServicosForm(ModelForm):
-    manicure = forms.BooleanField()
-    pedicure = forms.BooleanField()
-    penteado = forms.BooleanField()
-    corte = forms.BooleanField()
-    sobrancelha = forms.BooleanField()
-    depilacao = forms.BooleanField()
-    limpeza = forms.BooleanField()
+    servico = forms.CharField() 
+    valor = forms.IntegerField()
     class Meta:
         model = Servicos
-        fields = [ 'manicure', 'pedicure', 'penteado', 'corte', 'sobrancelha', 'depilacao', 'limpeza']
-
+        fields = ['servico', 'valor']
 
 
 
