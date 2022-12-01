@@ -16,32 +16,6 @@ TIME_CHOICES = [
     ("18:00 às 19:00", "18:00 às 19:00"),
 ]
 
-MAN_CHOICES = [
-    ("Manicure", "manicure"),
-]
-
-PED_CHOICES = [
-    ("Pedicure", "pedicure"),
-]
-
-PEN_CHOICES = [
-    ("Penteado", "penteado"),
-]
-
-CORTE_CHOICES = [
-    ("Corte", "corte"),
-]
-SOB_CHOICES = [
-    ("Sobrancelha", "sobrancelha"),
-]
-
-DEP_CHOICES = [
-    ("Depilacao", "depilacao"),
-]
-
-LIMP_CHOICES = [
-    ("Limpeza", "limpeza"),
-]
 
 # Create the form class.
 class UsersForm(ModelForm):
@@ -70,16 +44,3 @@ class ServicosForm(ModelForm):
     class Meta:
         model = Servicos
         fields = ['servico', 'valor']
-
-
-
-
-
-""" class PacotesForm(ModelForm):
-    prata = forms.BooleanField()
-    bronze = forms.BooleanField()
-    ouro = forms.BooleanField()
-    diamante = forms.BooleanField()
-    class Meta:
-        model = Agendamento
-        fields = [ 'prata', 'bronze', 'ouro'] """

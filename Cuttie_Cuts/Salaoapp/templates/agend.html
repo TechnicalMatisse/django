@@ -18,7 +18,7 @@
                 <img src="https://i.imgur.com/3uy9MEM.png">
             </div>
             <div>
-                <a href="http://viniboy.pythonanywhere.com/"><img src="https://i.imgur.com/SJkJT7z.png"></a>
+                <a href="http://viniboy.pythonanywhere.com/homepage/"><img src="https://i.imgur.com/SJkJT7z.png"></a>
             </div>
 
             <div>
@@ -47,6 +47,7 @@
                 <div class="row">
                     <label for="data">Data do atendimento</label>
                     {{agendform.data}}
+                    <span class="help-block">{{erro}}</span>
 
                     <div class="row">
                         <label for="hora">Hora</label>
@@ -55,42 +56,11 @@
             </fieldset>
 
             <legend>Serviços</legend>
-
-            <!-- <div>
-                <div class="gender-inputs">
-                    <div class="gender-title">
-                        <p>Pacotes (opcional)</p>
-                    </div>
-
-                    <div class="gender-group">
-                        <div class="gender-input">
-                            <input id="female" type="radio" name="gender">
-                            <label for="female">Prata</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="male" type="radio" name="gender">
-                            <label for="male">Bronze</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="others" type="radio" name="gender">
-                            <label for="others">Ouro</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="none" type="radio" name="gender">
-                            <label for="none">Diamante</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
- -->
             <br>
             <div class="label">
                 <fieldset>
                     {% for s in servicoform %}
-                    <p><input type="checkbox" id="{{s.id}}" name="servico-{{s.id}}"> <b>R${{s.valor}}</b>{{s.servico}}</p>
+                        <p><input type="checkbox" id="{{s.id}}" name="servico-{{s.id}}"> <b>R${{s.valor}}</b>{{s.servico}}</p>
                     {% endfor %}
             </div>
             <div class="row">
@@ -98,9 +68,6 @@
             </div>
             <div class="row">
                 {{agendform.comentario}}
-
-                <!--                         <textarea name="sobre" id="sobre" cols="30" rows="5" placeholder="Descreva suas observações"
-                            autocomplete="off"></textarea>-->
             </div>
 
             <div class="buttons">
@@ -128,7 +95,6 @@
     </div>
 </body>
     <script>
-        
         function regex_nome(evento){
             const padrao = /[A-Z, a-z, '', á, é, í, ó, ú, ã, õ, â, ê, ô]/
             var tecla = evento.key
@@ -147,9 +113,7 @@
             if(txt.value.length==5){
                 txt.value += "-"
             }
-        }
-
-        
+        }   
     </script>
 
 </html>

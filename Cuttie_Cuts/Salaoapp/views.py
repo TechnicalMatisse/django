@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from Salaoapp.forms import UsersForm, AgendamentoForm, ServicosForm
 from Salaoapp.models import Usuario, Agendamento, Servicos, Servicos_preenchido
 
+from datetime import datetime
 
 # Create your views here.
 def home(request):
@@ -92,7 +93,6 @@ def profile(request):
 
 def do_update(request):
     form= Usuario.objects.get(id=request.session['uid'])
-    form.usuario = request.POST['usuario']
     form.nome = request.POST['nome']
     form.ultimo_nome = request.POST['ultimo_nome']
     form.celular = request.POST['celular']
@@ -103,29 +103,38 @@ def do_update(request):
 def agendamento(request):
     data = {}
     data['servicoform'] = Servicos.objects.all()
-    if request.method == 'POST':
-        c = Agendamento(usuario=Usuario.objects.get(id=request.session['uid']), nome = request.POST['nome'], ultimo_nome = request.POST['ultimo_nome'], celular = request.POST['celular'], data = request.POST['data'], hora = request.POST['hora'], comentario = request.POST['comentario'])
-        c.save()
-        for i in request.POST:
-            if i.find("-")!=-1:
-                print(i)
-                sid = i.split("-")
-                s = Servicos_preenchido.objects.create(servico=Servicos.objects.get(id=sid[1]), agendamento=c)
-                s.save()
-        return redirect('agendamento')
-    else:
-        data['agendform'] = AgendamentoForm()
-        data['history'] = Agendamento.objects.filter(usuario=request.session['uid'])
-        return render(request,'agend.html',data)
+    try:
+        if request.method == 'POST':
+            c = Agendamento(usuario=Usuario.objects.get(id=request.session['uid']), nome = request.POST['nome'], ultimo_nome = request.POST['ultimo_nome'], celular = request.POST['celular'], data = request.POST['data'], hora = request.POST['hora'], comentario = request.POST['comentario'])
+            data_convertida = datetime.strptime(request.POST['data'], '%Y-%m-%d').date()
+            if data_convertida < datetime.now().date():
+                    return redirect('erroagend')
+            else:
+                c.save()
+            for i in request.POST:
+                if i.find("-")!=-1:
+                    sid = i.split("-")
+                    s = Servicos_preenchido.objects.create(servico=Servicos.objects.get(id=sid[1]), agendamento=c)
+                    s.save() 
+            return redirect('agendamento')
+        else:
+            data['agendform'] = AgendamentoForm()
+            data['history'] = Agendamento.objects.filter(usuario=request.session['uid'])
+            return render(request,'agend.html', data)
+    except KeyError:
+        return redirect(login)
 
-
-
+def erroagend(request):
+    return render(request, 'erroagend.html',)
+    
 def edit_coment(request, id):
+    data = {}
+    data['servicoform'] = Servicos.objects.all()
     c = Agendamento.objects.get(id=id)
     if request.method == 'POST':
         f = AgendamentoForm(request.POST, instance=c)
         f.save()
-        return redirect('agendamento')
+        return render(request,'agend.html')
     else:
         f = AgendamentoForm(instance=c)
         return render(request, 'agend.html',{'agendform':f})
